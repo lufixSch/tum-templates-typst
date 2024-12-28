@@ -1,20 +1,8 @@
 #import "@preview/touying:0.5.3": *
-
 #import "@preview/numbly:0.1.0": numbly
 
-#let text-font = "TeX Gyre Heros"
-#let tum-blue = rgb("#0065BD")
+#import "tum-templates.typ": tum-text-font, tum-info-block, tum-blue
 
-#let tum-info-block(group: "Please Adjust", school: "Please Adjust") = {
-    set text(size: 0.6em, fill: tum-blue)
-
-    group
-    linebreak()
-    school
-    linebreak()
-    "Technical University of Munich"
-    linebreak()
-}
 
 #let title-slide(tum-info: tum-info-block(), ..args) = touying-slide-wrapper(self => {
     self = utils.merge-dicts(
@@ -29,7 +17,7 @@
         block(
             width: 80%,
             inset: (y: 1em),
-            text(size: 2em, fill: self.colors.primary, weight: "bold", font: text-font, info.title),
+            text(size: 2em, fill: self.colors.primary, weight: "bold", font: tum-text-font, info.title),
         )
         v(24pt)
         grid(
@@ -91,7 +79,7 @@
 })
 
 #let tum-beamer(aspect-ratio: "16-9", title: "", subtitle: none, authors: (), institute: none, ..args, body) = {
-  set text(size: 18pt, font: text-font)
+  set text(size: 18pt, font: tum-text-font)
 
   show: touying-slides.with(
     config-page(

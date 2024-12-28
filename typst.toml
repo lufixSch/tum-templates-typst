@@ -1,0 +1,9 @@
+[package]
+name = "tum-templates"
+version = "0.2.0"
+entrypoint = "lib.typ"
+authors = ["LufixSch <https://lufixsch.github.io>"]
+license = "GPLv3"
+description = "Templates and utilities for TUM documents"
+repository = "https://github.com/lufixSch/tum-templates-typst"
+exclude: ["**.pdf", "test.typ"]

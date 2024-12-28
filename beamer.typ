@@ -1,7 +1,7 @@
 #import "@preview/touying:0.5.3": *
 #import "@preview/numbly:0.1.0": numbly
 
-#import "tum-templates.typ": tum-text-font, tum-info-block, tum-blue
+#import "util.typ": tum-text-font, tum-info-block, tum-blue
 
 
 #let title-slide(tum-info: tum-info-block(), ..args) = touying-slide-wrapper(self => {

@@ -1,4 +1,4 @@
-#import "tum-templates.typ": tum-text-font, tum-info-block, tum-blue, tum-author
+#import "util.typ": tum-text-font, tum-info-block, tum-blue, tum-author
 
 #let tum-article(title: "", authors: (), tum-info: tum-info-block(), date: none, body, lang: "en") = {
     // Basic document properties

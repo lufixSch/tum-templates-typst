@@ -26,6 +26,10 @@ Afterwards the package can be imported:
 ...
 ```
 
+### Typst WebAPP
+
+Unfortunately this package is not yet available as an official Typst package. Therefore it can not be imported/installed in the Typst webapp. The easiest workaround is, to upload the `utility.typ`, the `.typ` file corresponding to the required template and the `assets` to your project.
+
 ## Usage
 
 Currently, the following templates are supported:

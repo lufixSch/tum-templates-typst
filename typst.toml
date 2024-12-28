@@ -6,4 +6,4 @@ authors = ["LufixSch <https://lufixsch.github.io>"]
 license = "GPLv3"
 description = "Templates and utilities for TUM documents"
 repository = "https://github.com/lufixSch/tum-templates-typst"
-exclude: ["**.pdf", "test.typ"]
+exclude = ["**.pdf", "test.typ"]

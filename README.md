@@ -20,7 +20,7 @@ Here `{data-dir}` is the directory for local Typst packages:
 
 Afterwards the package can be imported:
 
-```typ
+```
 #import "@local/tum-templates:0.2.0": *
 
 ...
@@ -39,7 +39,7 @@ Currently, the following templates are supported:
 
 The template is initialized as follows. Arguments change depending on the specific template.
 
-```typ
+```
 #import "@local/tum-templates:0.2.0": *
 
 #show template.with(...)

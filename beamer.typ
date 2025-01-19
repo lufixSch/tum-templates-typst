@@ -51,7 +51,7 @@
   let header(self) = {
     show: components.cell.with(inset: 2em)
 
-    set align(horizon)
+    set align(top)
     set text(size: 1.8em, weight: "bold", fill: self.colors.primary)
     if self.store.title != none {
       utils.call-or-display(self, self.store.title)
@@ -84,7 +84,7 @@
   show: touying-slides.with(
     config-page(
       paper: "presentation-" + aspect-ratio,
-      margin: (top: 2em, bottom: 2em, x: 2em)
+      margin: (top: 5em, bottom: 5em, x: 2em)
     ),
     config-common(
       slide-fn: slide,

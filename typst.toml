@@ -1,6 +1,6 @@
 [package]
 name = "tum-templates"
-version = "0.2.0"
+version = "0.3.0"
 entrypoint = "lib.typ"
 authors = ["LufixSch <https://lufixsch.github.io>"]
 license = "GPLv3"

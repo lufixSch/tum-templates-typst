@@ -16,3 +16,17 @@
     return (name: name, affiliation: affiliation, email: email)
 }
 
+#let tum-emphasize(severity: none, body) = {
+    let color = if severity == none { black } else if severity == "info" { tum-blue }
+
+    v(.3em)
+    block(
+        stroke: color,
+        width: 100%,
+        inset: 2pt,
+        outset: .4em,
+        radius: .2em,
+        body
+    )
+    v(.3em)
+}

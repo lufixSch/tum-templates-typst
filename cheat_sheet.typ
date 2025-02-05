@@ -7,6 +7,7 @@
   body,
   lang: "en",
   text-size: 8pt,
+  max-pages: none
 ) = {
   // Basic document properties
   set document(author: authors.map(a => a.name), title: title)
@@ -55,6 +56,14 @@
 
   // Body
   show: columns.with(2, gutter: 2em)
+
+  // Check maximum number of pages
+  if max-pages != none {
+    context {
+        let final_pages = counter(page).final().at(0)
+        assert(final_pages <= max-pages, message: "Maximum page number reaches")
+    }
+  }
 
   body
 }

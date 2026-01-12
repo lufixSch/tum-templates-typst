@@ -23,8 +23,8 @@
     block(
         stroke: color,
         width: 100%,
-        inset: 2pt,
-        outset: .4em,
+        inset: 0pt,
+        outset: 4pt,
         radius: .2em,
         body
     )

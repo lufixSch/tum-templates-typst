@@ -48,10 +48,3 @@
     body
 }
 
-#let abstract(body) = {
-    block(above: 2.5em, below: 2.5em, {
-        text(weight: 600, fill: tum-blue, "Abstract")
-        [ --- ]
-        body
-    })
-}

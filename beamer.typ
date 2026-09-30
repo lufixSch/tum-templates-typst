@@ -1,45 +1,48 @@
 #import "@preview/touying:0.5.3": *
 #import "@preview/numbly:0.1.0": numbly
 
-#import "util.typ": tum-text-font, tum-info-block, tum-blue
+#import "util.typ": tum-blue, tum-info-block, tum-text-font
 
 
-#let title-slide(tum-info: tum-info-block(), ..args) = touying-slide-wrapper(self => {
-    self = utils.merge-dicts(
-        self,
-        config-page(
-            margin: (top: 2em, bottom: 2em, x: 2em)
-        )
+#let title-slide(tum-info: tum-info-block(), title-size: 2em, ..args) = touying-slide-wrapper(self => {
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      margin: (top: 2em, bottom: 2em, x: 2em),
+    ),
+  )
+  let info = self.info + args.named()
+  let body = {
+    tum-info
+    block(
+      width: 80%,
+      inset: (y: 1em),
+      text(size: title-size, fill: self.colors.primary, weight: "bold", font: tum-text-font, info.title),
     )
-    let info = self.info + args.named()
-    let body = {
-        tum-info
-        block(
-            width: 80%,
-            inset: (y: 1em),
-            text(size: 2em, fill: self.colors.primary, weight: "bold", font: tum-text-font, info.title),
-        )
-        v(24pt)
-        grid(
-            columns: (1fr, 1fr),
-            align(left)[
-                #set text(fill: self.colors.neutral-darkest)
-                #if info.author != none {
-                    block(text(weight: "bold", info.author))
-                }
-                #if info.institute != none {
-                    block(text(size: 0.8em, info.institute))
-                }
-                #if info.date != none {
-                    block(utils.display-info-date(self))
-                }
-                #v(100%)
-            ],
-            place(bottom + right, float: true, clearance: 0em, scope: "parent", image("assets/tum_tower.svg", fit: "contain", height: 50%))
-        )
-    }
+    grid(
+      columns: (1fr, 1fr),
+      align(left)[
+        #set text(fill: self.colors.neutral-darkest)
+        #if info.author != none {
+          block(text(weight: "bold", info.author))
+        }
+        #if info.institute != none {
+          block(text(size: 0.8em, info.institute))
+        }
+        #if info.date != none {
+          block(utils.display-info-date(self))
+        }
+        #v(100%)
+      ],
+      place(bottom + right, float: true, clearance: 0em, scope: "parent", image(
+        "assets/tum_tower.svg",
+        fit: "contain",
+        height: 50%,
+      )),
+    )
+  }
 
-    touying-slide(self: self, body)
+  touying-slide(self: self, body)
 })
 
 #let slide(title: auto, ..args) = touying-slide-wrapper(self => {
@@ -78,29 +81,31 @@
   touying-slide(self: self, ..args)
 })
 
-#let tum-beamer(aspect-ratio: "16-9", title: "", subtitle: none, authors: (), institute: none, ..args, body) = {
+#let tum-beamer(aspect-ratio: "16-9", title: "", subtitle: none, authors: (), institute: none, show-notes: none, common: (:), ..args, body) = {
   set text(size: 18pt, font: tum-text-font)
 
   show: touying-slides.with(
     config-page(
       paper: "presentation-" + aspect-ratio,
-      margin: (top: 5em, bottom: 5em, x: 2em)
+      margin: (top: 5em, bottom: 2em, x: 1.5em),
     ),
     config-common(
       slide-fn: slide,
-      datetime-format: "[day].[month].[year]"
+      datetime-format: "[day].[month].[year]",
+      show-notes-on-second-screen: show-notes,
+      ..common
     ),
     config-colors(
       primary: tum-blue,
       neutral-lightest: rgb("#ffffff"),
-      neutral-darkest: rgb("#000000")
+      neutral-darkest: rgb("#000000"),
     ),
     config-info(
-        title: title,
-        subtitle: subtitle,
-        author: authors.join(", "),
-        date: datetime.today(),
-        institute: institute
+      title: title,
+      subtitle: subtitle,
+      author: authors.join(", "),
+      date: datetime.today(),
+      institute: institute,
     ),
     config-store(
       title: none,
